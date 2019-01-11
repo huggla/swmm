@@ -3,7 +3,7 @@ ARG DESTDIR="/swmm5"
 
 FROM huggla/alpine-official:$TAG as alpine
 
-ARG BUILDDEPS="build-base"
+ARG BUILDDEPS="build-base wget"
 ARG DOWNLOAD="https://www.epa.gov/sites/production/files/2018-08/swmm51013_engine_0.zip"
 ARG DESTDIR
 
