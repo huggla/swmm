@@ -21,8 +21,8 @@ RUN apk add $BUILDDEPS \
  && make \
  && cc -o swmm5 main.c -lswmm5
 
-FROM huggla/busybox:$TAG as image
+#FROM huggla/busybox:$TAG as image
 
-ARG DESTDIR
+#ARG DESTDIR
 
-COPY --from=alpine $DESTDIR $DESTDIR
+#COPY --from=alpine $DESTDIR $DESTDIR
