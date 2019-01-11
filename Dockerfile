@@ -19,7 +19,7 @@ RUN apk add $BUILDDEPS \
  && unzip -o "$downloadDir/GNU-LIB.ZIP" \
  && rm -rf $downloadDir \
  && make \
- && gcc -o "$DESTDIR/swmm5" main.c -lswmm5
+ && cc -o "$DESTDIR/swmm5" main.c -lswmm5
 
 FROM huggla/busybox:$TAG as image
 
