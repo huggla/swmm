@@ -10,7 +10,7 @@ ARG DESTDIR
 RUN apk add $BUILDDEPS \
  && downloadDir="$(mktemp -d)" \
  && cd $downloadDir \
- && wget "$DOWNLOAD" \
+ && wget --no-check-certificate "$DOWNLOAD" \
  && unzip $(basename "$DOWNLOAD") \
  && unzip makefiles.ZIP \
  && buildDir="$(mktemp -d)" \
