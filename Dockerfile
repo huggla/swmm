@@ -12,7 +12,7 @@ RUN apk add $BUILDDEPS \
  && cd $downloadDir \
  && wget --no-check-certificate "$DOWNLOAD" \
  && unzip $(basename "$DOWNLOAD") \
- && unzip makefiles.ZIP \
+ && unzip makefiles.zip \
  && buildDir="$(mktemp -d)" \
  && cd $buildDir \
  && unzip "$downloadDir/source5_1_013.zip" \
