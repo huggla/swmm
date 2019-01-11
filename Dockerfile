@@ -1,5 +1,5 @@
 ARG TAG="20181204"
-ARG DESTDIR="/swmm5"
+ARG DESTDIR="/swmm"
 
 FROM huggla/alpine-official:$TAG as alpine
 
@@ -19,7 +19,7 @@ RUN apk add $BUILDDEPS \
  && unzip -o "$downloadDir/GNU-LIB.ZIP" \
  && rm -rf $downloadDir \
  && make \
- && cc -o "$DESTDIR/swmm5" main.c -lswmm5
+ && cc -o swmm5 main.c -lswmm5
 
 FROM huggla/busybox:$TAG as image
 
