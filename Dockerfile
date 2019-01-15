@@ -3,14 +3,14 @@ ARG DESTDIR="/swmm"
 
 FROM huggla/alpine-official as alpine
 
-ARG BUILDDEPS="build-base wget linux-headers g++ gcc libstdc++"
+ARG BUILDDEPS="build-base wget"
 ARG DOWNLOAD="https://www.epa.gov/sites/production/files/2018-08/swmm51013_engine_0.zip"
 ARG DESTDIR
 
 RUN apk add $BUILDDEPS \
  && downloadDir="$(mktemp -d)" \
  && cd $downloadDir \
- && wget --no-check-certificate "$DOWNLOAD" \
+ && wget "$DOWNLOAD" \
  && unzip $(basename "$DOWNLOAD") \
  && unzip makefiles.zip \
  && buildDir="$(mktemp -d)" \
