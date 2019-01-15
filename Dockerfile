@@ -3,7 +3,7 @@ ARG DESTDIR="/swmm"
 
 FROM huggla/alpine-official as alpine
 
-ARG BUILDDEPS="build-base wget"
+ARG BUILDDEPS="build-base"
 ARG DOWNLOAD="https://www.epa.gov/sites/production/files/2018-08/swmm51013_engine_0.zip"
 ARG DESTDIR
 
@@ -19,7 +19,7 @@ RUN apk add $BUILDDEPS \
  && unzip -o "$downloadDir/GNU-LIB.zip" \
  && rm -rf $downloadDir \
  && CFLAGS=-mcmodel=large make \
-# && sed -i 's/cc -o libswmm5.so $(objs) -fopenmp -lm -lpthread -shared/cc -mcmodel=large -o libswmm5.so $(objs) -fopenmp -lm -lpthread -shared/' Makefile \
+ && sed -i 's/cc -o libswmm5.so $(objs) -fopenmp -lm -lpthread -shared/cc -mcmodel=large -o libswmm5.so $(objs) -fopenmp -lm -lpthread -shared/' Makefile \
 # && cat Makefile \
  && cc -mcmodel=large -o swmm5 main.c -lswmm5
 # && make
