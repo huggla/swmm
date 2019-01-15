@@ -17,10 +17,11 @@ RUN apk add $BUILDDEPS \
  && cd $buildDir \
  && unzip "$downloadDir/source5_1_013.zip" \
  && unzip -o "$downloadDir/GNU-LIB.zip" \
- && rm -rf $downloadDir
+ && rm -rf $downloadDir \
+ && CFLAGS=-mcmodel=large make \
 # && sed -i 's/cc -o libswmm5.so $(objs) -fopenmp -lm -lpthread -shared/cc -fPIC -o libswmm5.so $(objs) -fopenmp -lm -lpthread -shared/' Makefile \
 # && cat Makefile \
-# && cc -o swmm5 main.c -lswmm5 \
+ && cc -mcmodel=large -o swmm5 main.c -lswmm5
 # && make
 
 #FROM huggla/busybox:$TAG as image
