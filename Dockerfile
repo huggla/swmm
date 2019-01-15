@@ -19,7 +19,7 @@ RUN apk add $BUILDDEPS \
  && unzip -o "$downloadDir/GNU-LIB.zip" \
  && rm -rf $downloadDir \
  && CFLAGS=-mcmodel=large make \
-# && sed -i 's/cc -o libswmm5.so $(objs) -fopenmp -lm -lpthread -shared/cc -fPIC -o libswmm5.so $(objs) -fopenmp -lm -lpthread -shared/' Makefile \
+# && sed -i 's/cc -o libswmm5.so $(objs) -fopenmp -lm -lpthread -shared/cc -mcmodel=large -o libswmm5.so $(objs) -fopenmp -lm -lpthread -shared/' Makefile \
 # && cat Makefile \
  && cc -mcmodel=large -o swmm5 main.c -lswmm5
 # && make
