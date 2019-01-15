@@ -21,7 +21,7 @@ RUN apk add $BUILDDEPS \
 # && sed -i 's/cc -o libswmm5.so $(objs) -fopenmp -lm -lpthread -shared/cc -mcmodel=large -o libswmm5.so $(objs) -fopenmp -lm -lpthread -shared/' Makefile \
  && CFLAGS=-mcmodel=large make \
 # && cat Makefile \
- && cc -mcmodel=large -L ./ -o swmm5 main.c -lswmm5
+ && cc -L ./ -o swmm5 main.c -lswmm5
 # && make
 
 #FROM huggla/busybox:$TAG as image
