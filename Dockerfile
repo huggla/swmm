@@ -18,7 +18,7 @@ RUN apk add $BUILDDEPS \
  && unzip "$downloadDir/source5_1_013.zip" \
  && unzip -o "$downloadDir/GNU-LIB.zip" \
  && rm -rf $downloadDir \
- && sed -i 's/cc -o libswmm5.so $(objs) -fopenmp -lm -lpthread -shared/cc -o libswmm5.so $(objs) -fopenmp -lm -lpthread -shared -fPIC/' Makefile
+ && sed -i 's/cc -o libswmm5.so $(objs) -fopenmp -lm -lpthread -shared/cc -o libswmm5.so $(objs) -fopenmp -lm -lpthread -shared -fPIC/' Makefile \
  && make \
  && cc -o swmm5 main.c -lswmm5
 
