@@ -1,7 +1,7 @@
-ARG TAG="20181204"
+ARG TAG="20190115"
 ARG DESTDIR="/swmm"
 
-FROM huggla/alpine-official:$TAG as alpine
+FROM huggla/alpine-official as alpine
 
 ARG BUILDDEPS="build-base wget"
 ARG DOWNLOAD="https://www.epa.gov/sites/production/files/2018-08/swmm51013_engine_0.zip"
@@ -16,7 +16,7 @@ RUN apk add $BUILDDEPS \
  && buildDir="$(mktemp -d)" \
  && cd $buildDir \
  && unzip "$downloadDir/source5_1_013.zip" \
- && unzip -o "$downloadDir/GNU-LIB.ZIP" \
+ && unzip -o "$downloadDir/GNU-LIB.zip" \
  && rm -rf $downloadDir \
  && make \
  && cc -o swmm5 main.c -lswmm5
