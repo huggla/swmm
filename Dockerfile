@@ -18,14 +18,14 @@ RUN apk add $BUILDDEPS \
  && unzip "$downloadDir/source5_1_013.zip" \
  && unzip -o "$downloadDir/GNU-LIB.zip" \
  && rm -rf $downloadDir \
-# && sed -i 's/cc -o libswmm5.so $(objs) -fopenmp -lm -lpthread -shared/cc -mcmodel=large -o libswmm5.so $(objs) -fopenmp -lm -lpthread -shared/' Makefile \
  && CFLAGS=-mcmodel=large make \
-# && cat Makefile \
- && cc -L ./ -o swmm5 main.c -lswmm5
-# && make
+ && cc -L ./ -o swmm5 main.c -lswmm5 \
+ && mkdir -p $DESTDIR/usr/lib $DESTDIR/usr/bin \
+ && cp -a libswmm5.so $DESTDIR/usr/lib/ \
+ && cp -a swmm5 $DESTDIR/usr/bin/
 
-#FROM huggla/busybox:$TAG as image
+FROM huggla/busybox:$TAG as image
 
-#ARG DESTDIR
+ARG DESTDIR
 
-#COPY --from=alpine $DESTDIR $DESTDIR
+COPY --from=alpine $DESTDIR $DESTDIR
