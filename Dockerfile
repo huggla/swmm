@@ -1,7 +1,7 @@
-ARG TAG="20190220"
+ARG TAG="20190327"
 ARG DESTDIR="/swmm"
 
-FROM huggla/alpine-official as alpine
+FROM huggla/alpine as alpine
 
 ARG BUILDDEPS="build-base"
 ARG DOWNLOAD="https://www.epa.gov/sites/production/files/2018-08/swmm51013_engine_0.zip"
