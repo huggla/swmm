@@ -5,6 +5,7 @@ FROM huggla/alpine as alpine
 
 ARG BUILDDEPS="build-base"
 ARG DOWNLOAD="https://www.epa.gov/sites/production/files/2018-08/swmm51013_engine_0.zip"
+ARG CFLAGS="-Os -fomit-frame-pointer"
 ARG DESTDIR
 
 RUN apk add $BUILDDEPS \
@@ -18,7 +19,7 @@ RUN apk add $BUILDDEPS \
  && unzip "$downloadDir/source5_1_013.zip" \
  && unzip -o "$downloadDir/GNU-LIB.zip" \
  && rm -rf $downloadDir \
- && CFLAGS=-mcmodel=large make \
+ && make \
  && cc -L ./ -o swmm5 main.c -lswmm5 \
  && mkdir -p $DESTDIR/usr/lib $DESTDIR/usr/bin \
  && cp -a libswmm5.so $DESTDIR/usr/lib/ \
