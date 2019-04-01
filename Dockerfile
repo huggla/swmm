@@ -5,7 +5,7 @@ FROM huggla/alpine as alpine
 
 ARG BUILDDEPS="build-base"
 ARG DOWNLOAD="https://www.epa.gov/sites/production/files/2018-08/swmm51013_engine_0.zip"
-ARG CFLAGS="-Os -fomit-frame-pointer"
+ARG CFLAGS="-Os -fomit-frame-pointer -mcmodel=large"
 ARG DESTDIR
 
 RUN apk add $BUILDDEPS \
